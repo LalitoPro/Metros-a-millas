@@ -1,0 +1,39 @@
+#Pruebas Unitarias
+"""
+>>> pedro = Metros_Millas('metros a millas',4.0)
+>>> pedro.RealizarConversion()
+>>> pedro.getResultado()
+0.002485484
+
+
+>>> valor = Metros_Millas('millas a metros',0.002485484)
+>>> valor.RealizarConversion()
+>>> valor.getResultado()
+4.0
+"""
+#Nombre de la clase
+class Metros_Millas:
+    __numero = float(0)
+    __totalresultado = float(0)
+    __tipodeconvercion = ''
+
+#Aqui se defino/creo el metodo constructor
+    def __init__(self, tipoconversion, numero):
+        self.__tipodeconvercion = tipoconversion
+        self.__numero = numero
+#Metodo constructor
+    def RealizarConversion(self):               #
+        if(self.__tipodeconvercion == 'metros a millas'):
+            self.__totalresultado = self.__numero* 0.000621371
+        elif(self.__tipodeconvercion == 'millas a metros'):
+            self.__totalresultado = self.__numero/ 0.000621371
+        else:
+            self.__totalresultado = 'mal'
+#Metodo de salida
+    def getResultado(self):
+        return self.__totalresultado
+
+#Metodo main para las pruebas unitarias
+if __name__== '__main__':
+    import doctest
+doctest.testmod()
